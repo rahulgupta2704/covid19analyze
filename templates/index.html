@@ -1,0 +1,130 @@
+{% include 'base.html' %}
+
+{% block title %}  {% endblock %}
+{% block content %}
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+<h3 class="table-heading">This page is dedicated to analysing the COVID 19 cases throughout the World</h3> 
+<div class="page">
+    <div class="total-cases-info"> 
+        <div class = "total-cases-child child1">
+            <span class="chill">Total Cases</span>
+            <h2>
+                {{total_data[0] | safe}}
+            </h2>
+        </div>
+        <div class = "total-cases-child child2">
+            <span class="chill">Total Cases Cured</span>
+            <h2>
+                {{total_data[3] | safe}}
+            </h2>
+        </div>
+        <div class = "total-cases-child child3">
+            <span class="chill">Total Deaths</span>
+            <h2>
+                {{total_data[1] | safe}}
+            </h2>
+        </div>
+        <div class = "total-cases-child child3">
+            <span class="chill">Active Cases</span>
+            <h2>
+                {{total_data[2] | safe}}
+            </h2>
+        </div>
+    </div>
+    <h2 class="table-heading"><u>COVID-19 pandemic by Country</u></h2>
+    <div class="table-data">
+        {{returnList | safe}};
+    </div>
+    <h2 class="table-heading">Tourists arrival per year for all the countries</h2>
+    <p class="text1">The first transmission to humans was in Wuhan, China.
+        Since then, the virus has mostly spread through person-to-person contact. So Tourism in a country is a major
+        cause for the spread of the virus. The graph below compares the tourists arrival in a country per year to
+        the total cases.
+    </p>
+    <div class="plots">
+        {{fig4 | safe}}
+    </div>
+    <p class="text1">We can clearly see the correlation between the two. Further narrowing it down to selected countries.
+    </p>
+    <h2 class="table-heading">Countries with total cases more than 5,000 in number</h2>
+    <div class="plots">
+        {{fig1 | safe}}
+    </div>
+    <div class="plots">
+        {{fig2 | safe}}
+    </div>
+    <div class="plots">
+        {{fig3 | safe}}
+    </div>
+    <p class="text1">Higher the GDP of a country, higher is the urban population and that much well established is the Tourism sector in that country. 
+        Thus, the virus has majorly affected the Countries with a high GDP, high Urban Population & high number of tourists arrival.
+    </p>
+    <h2 class="table-heading"><u>The following Ananlysis for Timeline plots are done on 18th May, 2020</u></h2>
+    <p class="text1">The analysis is done in three groups, each group includes some countries and a Timeline
+        plot of those countries is displayed. After each Timeline plot conclusion drawn from the plots is mentioned
+    </p>
+    <h2 class="table-heading">Countries with the maximum number of Total cases</h2>
+    <p class="text1">The graphs below show the increase in total cases and increase in total tests per thousand for:
+        Russia, United Kingdom,Spain, Italy, Germany, Turkey, France, Iran, India & China from 1st March
+    </p>
+    <div class="plots">
+        {{figure1 | safe}}
+    </div>
+    <div class="plots">
+        {{figure2 | safe}}
+    </div>
+    <p class="text1"># From the above plots we can compare India and Russia as both the countries have a similar starting
+        points with respect to the total cases.<br/># For Russia, according to the news the lockdown lasted only for six
+        weeks and after that the operations in industries began to start. We can see the consequences for that clearly in 
+        the graph, the cases have increased rapidly.<br/>#   Whereas India is still under extended lockdown and the rate of
+        increase in cases is low when compared to Russia.<br/>#   Another fact to consider is that the testing rate in India
+        is among the lowest in the group which could be the cause for less number of cases than Russia due to underreporting
+        Whereas Russia has one of the highest testing rates in the graph, this cloud be the cause that the more cases have 
+        been detected and cause an increase in the total cases.
+    </p>
+    <h2 class="table-heading">Countries with Total cases more than 30,000 in number</h2>
+    <p class="text1">The graphs below show the increase in total cases and increase in total tests per thousand for:
+        Canada, Belgium, Mexico, Chile, Ecuador, Qatar, Switzerland, Portugal from 1st March
+    </p>
+    <div class="plots">
+        {{figure3 | safe}}
+    </div>
+    <div class="plots">
+        {{figure4 | safe}}
+    </div>
+    <p class="text1"># Among the countries in the above plots, Switzerland[Light Green] had the earliest rise in cases
+        at around 15th May compared to other countries in the plot. Still It has managed to flatten the curve due to 
+        high testing rate from the very beginning!<br/>
+        # Next we can se that Portugal[Light Blue] & Belgium[Blue] have managed to flatten their curve for total cases.
+        And even they have one of the highest testing rates among the countries in the plot, infact they have a higher 
+        testing rate than 90% of the countries.
+    </p>
+    <h2 class="table-heading">Countries with Total cases more than 10,000 in number</h2>
+    <p class="text1">The graphs below show the increase in total cases and increase in total tests per thousand for:
+        Bangladesh, Poland, Indonesia, Romania, Israel, Japan, Austria, South Korea from 1st March
+    </p>
+    <div class="plots">
+        {{figure5 | safe}}
+    </div>
+    <div class="plots">
+        {{figure6 | safe}}
+    </div>
+    <p class="text1"># Among the countries in the above two plots, South Korea[Lime Green], Israel[Purple] & Austria[Blue]
+        have flattened their curve for total cases. Israel & Austria have high testing rates meanwhile South Korea began
+        testing from the very beginning.<br/>
+        # Another notable country is Japan which despite having a very low testing rate has started to flatten its total
+        cases curve. According to the news, people in Japan started wearing masks and maintaining social distancing from 
+        Frebruary iself. Must be the reason why it has managed to control the pandemic despite being one of the most densly
+        populated countries! 
+    </p>
+    
+</div>
+
+{% endblock %}
+
+{% block body %}
+    
+{% endblock %}
